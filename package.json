@@ -1,0 +1,20 @@
+{
+  "name": "openapi-to-md",
+  "version": "1.0.0",
+  "description": "openapi (swagger) json to markdown",
+  "main": "index.js",
+  "scripts": {
+    "convert:md": "node index.js"
+  },
+  "keywords": [
+    "openapi",
+    "node",
+    "swagger",
+    "markdown"
+  ],
+  "author": "minkj1992",
+  "license": "MIT",
+  "dependencies": {
+    "widdershins": "^4.0.1"
+  }
+}

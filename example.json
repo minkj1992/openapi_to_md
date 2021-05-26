@@ -1,0 +1,45 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "TEST JSON SWAGGER",
+    "description": "\ucf58 \uae30\ubc18 \uc774\ubca4\ud2b8 \ud398\uc774\uc9c0 \ud504\ub85c\uc81d\ud2b8\uc758 API swagger\uc785\ub2c8\ub2e4.",
+    "termsOfService": "https://www.google.com/policies/terms/",
+    "contact": {
+      "email": "contact@snippets.local"
+    },
+    "license": {
+      "name": "BSD License"
+    },
+    "version": "v1"
+  },
+  "basePath": "/",
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "securityDefinitions": {
+    "Basic": {
+      "type": "basic"
+    }
+  },
+  "security": [
+    {
+      "Basic": []
+    }
+  ],
+  "paths": {
+    "/test": {
+      "post": {
+        "operationId": "test",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["core"]
+      },
+      "parameters": []
+    }
+  },
+  "definitions": {}
+}
