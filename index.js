@@ -4,14 +4,14 @@ const fileData = fs.readFileSync("swagger.json", "utf8");
 const swaggerFile = JSON.parse(fileData);
 
 let options = {}; // defaults shown
-options.codeSamples = true;
-options.httpsnippet = true;
-options.language_tabs = [
-  { http: "HTTP" },
-  { javascript: "JavaScript" },
-  { python: "Python" },
-];
-options.language_clients = [{ shell: "curl" }];
+options.codeSamples = false;
+options.httpsnippet = false;
+// options.language_tabs = [
+//   { http: "HTTP" },
+//   { javascript: "JavaScript" },
+//   { python: "Python" },
+// ];
+// options.language_clients = [{ shell: "curl" }];
 //options.loadedFrom = sourceUrl; // only needed if input document is relative
 //options.user_templates = './user_templates';
 options.templateCallback = function (templateName, stage, data) {

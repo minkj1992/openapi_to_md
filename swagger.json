@@ -1,0 +1,421 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Con-Item API",
+    "description": "\ucf58 \uae30\ubc18 \uc774\ubca4\ud2b8 \ud398\uc774\uc9c0 \ud504\ub85c\uc81d\ud2b8\uc758 API swagger\uc785\ub2c8\ub2e4.",
+    "termsOfService": "https://www.google.com/policies/terms/",
+    "contact": {
+      "email": "contact@snippets.local"
+    },
+    "license": {
+      "name": "BSD License"
+    },
+    "version": "v1"
+  },
+  "basePath": "/",
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "securityDefinitions": {
+    "Basic": {
+      "type": "basic"
+    }
+  },
+  "security": [
+    {
+      "Basic": []
+    }
+  ],
+  "paths": {
+    "/core/api/cicd_notification": {
+      "post": {
+        "operationId": "core_api_cicd_notification_create",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["core"]
+      },
+      "parameters": []
+    },
+    "/fantem/api/double_check": {
+      "get": {
+        "operationId": "fantem_api_double_check_list",
+        "description": "\uc911\ubcf5\ud655\uc778 \ud14c\uc2a4\ud2b8",
+        "parameters": [
+          {
+            "name": "nickname",
+            "in": "query",
+            "description": "\ub2c9\ub124\uc784 \uc911\ubcf5\ud655\uc778\uc6a9 API ",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["fantem"]
+      },
+      "parameters": []
+    },
+    "/fantem/api/fantem": {
+      "post": {
+        "operationId": "fantem_api_fantem_create",
+        "description": "\ud32c\ud15c \ubc1c\uae09",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "artist_id": {
+                  "description": "\ud32c\ud15c\uc744 \ubc1c\uae09\ubc1b\uc744 \uc544\ud2f0\uc2a4\ud2b8 Id",
+                  "type": "integer",
+                  "default": 39235
+                },
+                "nickname": {
+                  "description": "\uc751\uc6d0\ubcf4\ub4dc\uc5d0\uc11c \uc0ac\uc6a9\ud560 \uc0ac\uc6a9\uc790 \ub2c9\ub124\uc784",
+                  "type": "string"
+                },
+                "artist_name": {
+                  "description": "\uc544\ud2f0\uc2a4\ud2b8",
+                  "type": "string",
+                  "default": "\uc870\uc815\uc11d"
+                },
+                "artist_postposition": {
+                  "description": "\ud32c\ud15c \ub0b4 \uc544\ud2f0\uc2a4\ud2b8 \ub2e4\uc74c\uc5d0 \ubd99\ub294 \uc804\uce58\uc0ac\ub85c '\uc744/\ub97c'\ub97c \uc911 \ud558\ub098",
+                  "type": "string",
+                  "default": "\uc744"
+                },
+                "nickname_postposition": {
+                  "description": "\ud32c\ud15c \ub0b4 \ub2c9\ub124\uc784 \ub2e4\uc74c\uc5d0 \ubd99\ub294 \uc804\uce58\uc0ac\ub85c '\uc774/\uac00' \uc911 \ud558\ub098",
+                  "type": "string",
+                  "default": "\uac00"
+                },
+                "message": {
+                  "description": "\ud32c\ud15c \ub0b4 \uc751\uc6d0 \uba54\uc2dc\uc9c0\ub85c \ucd5c\ub300 7\uc790",
+                  "type": "string",
+                  "default": "\uc751\uc6d0\uc751\uc6d0\ud574"
+                },
+                "pattern_1": {
+                  "description": "\ud32c\ud15c \ud328\ud134 1",
+                  "type": "string"
+                },
+                "pattern_2": {
+                  "description": "\ud32c\ud15c \ud328\ud134 2",
+                  "type": "string"
+                },
+                "background_color": {
+                  "description": "\ud32c\ud15c \ubc30\uacbd\uc0c9\uc0c1",
+                  "type": "string",
+                  "default": "#E03938"
+                },
+                "text_theme": {
+                  "description": "\ud32c\ud15c \uae00\uc790 \uc0c9\uc0c1",
+                  "type": "string",
+                  "default": "#000000"
+                },
+                "channel": {
+                  "description": "\uc751\uc6d0\ubcf4\ub4dc \ucc44\ub110 \ucd94\uac00\ud560\uc9c0 \uc5ec\ubd80",
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "HTTP_202_ACCEPTED"
+          },
+          "400": {
+            "description": "BadRequest(400), Validation error(40000), NOT_YET_PASSED_DAYS_ERROR(40001)NICKNAME_LENGTH_OVER_ERROR(40002), NICKNAME_DOUBLE_CHECKED_ERROR(40003), PROHIBIT_WORD_ERROR(40004)ARTIST_FORBIDDEN(40005)"
+          },
+          "401": {
+            "description": "HasNoKakaoAccountError(40100)"
+          },
+          "500": {
+            "description": "INTERNAL_SERVER_ERROR(500), CON_SERVER_ERROR(50001), FUNDING_SERVER_ERROR(50002), WITHDRAW_FAILURE_ERROR(50003)DELETE_FAILURE_ERROR(50004), CREATE_FAILURE_ERROR(50005), FANTEM_DATA_INVALID_FORMAT_ERROR(50006), ISSUE_FANTEM_FAILURE(50007)"
+          }
+        },
+        "tags": ["fantem"]
+      },
+      "parameters": []
+    },
+    "/fantem/api/favorites": {
+      "get": {
+        "operationId": "fantem_api_favorites_list",
+        "description": "\uc544\ud2f0\uc2a4\ud2b8 \uac80\uc0c9 API",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "\uac80\uc0c9\ud55c \uc544\ud2f0\uc2a4\ud2b8\uba85",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["fantem"]
+      },
+      "parameters": []
+    },
+    "/fantem/api/is_delete_finished": {
+      "post": {
+        "operationId": "fantem_api_is_delete_finished_create",
+        "description": "\uc0ad\uc81c TX \uc885\ub8cc \uc5ec\ubd80 \ucf5c\ubc31 API",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["fantem/callback"]
+      },
+      "parameters": []
+    },
+    "/fantem/api/is_withdraw_finished": {
+      "post": {
+        "operationId": "fantem_api_is_withdraw_finished_create",
+        "description": "\ud68c\uc218 TX \uc885\ub8cc \uc5ec\ubd80 \ucf5c\ubc31 API",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["fantem/callback"]
+      },
+      "parameters": []
+    },
+    "/fantem/api/prohibit": {
+      "post": {
+        "operationId": "fantem_api_prohibit_create",
+        "description": "\uae08\uce59\uc5b4 \ud14c\uc2a4\ud2b8",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "description": "\uae08\uce59\uc5b4 \uccb4\ud06c\ud560 \ud14d\uc2a4\ud2b8",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "description": "\uae08\uce59\uc5b4 \uccb4\ud06c\ud560 \ud14d\uc2a4\ud2b8",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["fantem"]
+      },
+      "parameters": []
+    },
+    "/fantem/api/user": {
+      "get": {
+        "operationId": "fantem_api_user_list",
+        "description": "\ud32c\ud15c \ubc1c\uae09 \uac00\ub2a5\uc5ec\ubd80 \uccb4\ud06c \uc6a9 API",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["fantem"]
+      },
+      "parameters": []
+    },
+    "/hrdks/api/v1/enc-cards": {
+      "get": {
+        "operationId": "hrdks_api_v1_enc-cards_list",
+        "summary": "\uc0b0\uc5c5\uc778\ub825\uacf5\ub2e8 \uc790\uaca9\uc99d \ub9ac\uc2a4\ud2b8 \uac00\uc838\uc624\uae30",
+        "description": "\n\u26a0 *`CQRS` not applied*\n\n1. (Query) \uc554\ud638\ud654 \ud15c\ud50c\ub9bf \uc801\uc6a9\ub41c, \uc0b0\uc778\uacf5 \uc790\uaca9\uc99d \ub370\uc774\ud130 \uc694\uccad\n2. (Command) async Mcard \ubc1c\uae09\n    - \uc554\ud638\ud654 \uc801\uc6a9\ub418\uc9c0 \uc54a\uc740 mcard\uc758 \uacbd\uc6b0 withdraw \uc9c4\ud589\n    - \uc554\ud638\ud654 \uc801\uc6a9\ub418\uc5c8\uc9c0\ub9cc, mcard \ub9ac\uc2a4\ud2b8\uc5d0 \uc874\uc7ac \ud558\uc9c0 \uc54a\ub294 \uacbd\uc6b0 \ubc1c\uae09  \n",
+        "parameters": [
+          {
+            "name": "mcard_encryption_spec_id",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "minLength": 1
+          },
+          {
+            "name": "enc_key",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "minLength": 1
+          },
+          {
+            "name": "enc_iv",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "minLength": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Output"
+            }
+          },
+          "400": {
+            "description": "```\n{\n\n\t\"code\": \"400\"\n\n\t\"default_code\": \"40011\"\n\n\t\"message\": \"\uc0b0\uc5c5\uc778\ub825 \uc790\uaca9\uc99d\uc744 \ubcf4\uc720\ud558\uace0 \uc788\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.\"\n\n}\n\n```"
+          },
+          "401": {
+            "description": "```\n{\n\n\t\"code\": \"401\"\n\n\t\"default_code\": \"40100\"\n\n\t\"message\": \"has no kakao account\"\n\n}\n\n```"
+          },
+          "500": {
+            "description": "```\n{\n\n\t\"code\": \"500\"\n\n\t\"default_code\": \"500\"\n\n\t\"message\": \"A Internal server error occurred.\"\n\n}\n\n```"
+          }
+        },
+        "tags": ["hrdks"]
+      },
+      "parameters": []
+    },
+    "/hrdks/api/v1/pre-validate/": {
+      "get": {
+        "operationId": "hrdks_api_v1_pre-validate_list",
+        "summary": "\uc0b0\uc5c5\uc778\ub825\uacf5\ub2e8 \uc790\uaca9\uc99d \ubc1c\uae09 \ud398\uc774\uc9c0 \uc811\uadfc validate",
+        "description": "\n1. `kakao` \ubc84\uc804 \uccb4\ud06c\n2. `wallet` \uac00\uc785 \uc5ec\ubd80 \uccb4\ud06c\n",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "```\n{\n\n\t\"code\": \"400\"\n\n\t\"default_code\": \"40009\"\n\n\t\"message\": \"KakaoTalk \ubc84\uc804 \uc5c5\ub370\uc774\ud2b8\uac00 \ud544\uc694\ud569\ub2c8\ub2e4.\"\n\n}\n\n```"
+          },
+          "401": {
+            "description": "```\n{\n\n\t\"code\": \"401\"\n\n\t\"default_code\": \"40103\"\n\n\t\"message\": \"\uc9c0\uac11 \uc11c\ube44\uc2a4\uc5d0 \uac00\uc785\ub418\uc9c0 \uc54a\uc740 \ud68c\uc6d0\uc785\ub2c8\ub2e4.\"\n\n}\n\n```"
+          },
+          "500": {
+            "description": "```\n{\n\n\t\"code\": \"500\"\n\n\t\"default_code\": \"500\"\n\n\t\"message\": \"A Internal server error occurred.\"\n\n}\n\n```"
+          }
+        },
+        "tags": ["hrdks"]
+      },
+      "parameters": []
+    },
+    "/minter/api/access_token": {
+      "get": {
+        "operationId": "minter_api_access_token_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["minter"]
+      },
+      "parameters": []
+    },
+    "/minter/api/is_withdraw_finished": {
+      "post": {
+        "operationId": "minter_api_is_withdraw_finished_create",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["minter"]
+      },
+      "parameters": []
+    },
+    "/minter/api/ldap_login": {
+      "post": {
+        "operationId": "minter_api_ldap_login_create",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["minter"]
+      },
+      "parameters": []
+    },
+    "/minter/api/mcard": {
+      "get": {
+        "operationId": "minter_api_mcard_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["minter"]
+      },
+      "post": {
+        "operationId": "minter_api_mcard_create",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["minter"]
+      },
+      "parameters": []
+    },
+    "/minter/api/verify": {
+      "get": {
+        "operationId": "minter_api_verify_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["minter"]
+      },
+      "parameters": []
+    }
+  },
+  "definitions": {
+    "Output": {
+      "required": ["hrdk_name_list"],
+      "type": "object",
+      "properties": {
+        "hrdk_name_list": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        }
+      }
+    }
+  }
+}
